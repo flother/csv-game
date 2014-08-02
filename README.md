@@ -9,8 +9,7 @@ from GopherCon
 about [Hekka](https://github.com/mozilla-services/heka) where he claims that Go
 is so slow at parsing CSV messages that they pass the over protocol buffers to a
 luajit process which parses the message and sends the data back over protocol
-buffers - and it's quicker than just reading it in Go ([14:45 in the video]
-(https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH#t=14m45)\).
+buffers - and it's quicker than just reading it in Go ([14:45 in the video](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH#t=14m45)\).
 I could hardly believe this so I wrote some sample code myself to check it.
 Sure enough, I found Go to be pretty slow at parsing CSV files.
 
