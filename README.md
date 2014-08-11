@@ -39,6 +39,7 @@ Here are some timings from my machine.
 | Go         | 0m1.561s |
 | Haskell    | 0m1.890s |
 | Lua LPEG   | 0m1.139s |
+| Luajit FFI | 0m1.038s |
 | Python 2.7 | 0m0.532s |
 | Python 3.3 | 0m0.857s |
 
@@ -47,6 +48,8 @@ C++ is using the Boost.Spirit library and not a specific library for parsing
 CSV.
 
 Lua is using a library for parsing LPEG grammars.
+
+Luajit FFI is using the C libcsv library through a foreign function interface.
 
 ## Rudimentary Analysis
 
