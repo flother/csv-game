@@ -1,4 +1,4 @@
-CFLAGS=-Werror -Wall -pedantic -std=c11 -g -O2
+CFLAGS=-Werror -Wall -pedantic -std=c11 -g -O2 -fpic -march=native
 
 .PHONY: all
 

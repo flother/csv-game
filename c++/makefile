@@ -1,4 +1,4 @@
-CXXFLAGS=-Werror -Wall -pedantic -std=c++11 -g -O2
+CXXFLAGS=-Werror -Wall -pedantic -std=c++11 -g -O2 -fpic -march=native
 
 .PHONY: all
 

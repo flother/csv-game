@@ -23,12 +23,10 @@ versions in various languagues. So I've collected them here.
 or whatever.
 
 ## Disclaimer
-I don't claim to analyse why the timings are why they are they way they are or
-that some of the implementations are representative of idiomatic code.
-
-Particularly egregious is the Haskell code where I couldn't figure out how to
-count the fields in a row and so I hard coded it. I'd be happy for someone to
-contribute code to fix it.
+I don't claim that all of the implementations are representative of idiomatic
+code.  Particularly egregious is the Haskell code where I couldn't figure out
+how to count the fields in a row and so I hard coded it. I'd be happy for
+someone to contribute code to fix it.
 
 ## Timings
 
@@ -40,6 +38,17 @@ Here are some timings from my machine.
 | C++ Spirit | 0m0.981s |
 | Go         | 0m1.561s |
 | Haskell    | 0m1.890s |
-| Lua        | 0m1.139s |
+| Lua LPEG   | 0m1.139s |
 | Python 2.7 | 0m0.532s |
 | Python 3.3 | 0m0.857s |
+
+## Notes
+C++ is using the Boost.Spirit library and not a specific library for parsing
+CSV.
+
+Lua is using a library for parsing LPEG grammars.
+
+## Rudimentary Analysis
+
+Profiling the Go code, I can see that a lot of the time goes to Garbage
+collection. A lot of the time also goes to handling UFT8. 
