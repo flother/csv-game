@@ -38,6 +38,7 @@ Here are some timings from my machine.
 | C++ Spirit | 0m0.981s |
 | Go         | 0m1.561s |
 | Haskell    | 0m1.890s |
+| Java       | 0m0.781s |
 | Lua LPEG   | 0m1.139s |
 | Luajit FFI | 0m1.038s |
 | Python 2.7 | 0m0.532s |
