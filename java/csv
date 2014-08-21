@@ -3,6 +3,6 @@
 # run 'mvn install' to install the project locally and then use this csv:
 # ./csv < /tmp/hello
 
-opencsv_path=$HOME/.m2/repository/net/sf/opencsv/opencsv/2.0/opencsv-2.0.jar
-csv_path=$HOME/.m2/repository/csv/csv/1.0-SNAPSHOT/csv-1.0-SNAPSHOT.jar
-java -cp "${opencsv_path}:${csv_path}" csv.Csv
+bindir=$(realpath $(dirname $0))
+csv_path=$bindir/target/csv-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -cp "${csv_path}" csv.Csv
