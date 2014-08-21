@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# run 'mvn install' to install the project locally and then use this csv:
+# ./csv < /tmp/hello
+
+bindir=$(realpath $(dirname $0))
+csv_path=$bindir/target/scala-csv-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -cp "${csv_path}" ScalaCsv

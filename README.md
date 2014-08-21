@@ -32,17 +32,18 @@ someone to contribute code to fix it.
 
 Here are some timings from my machine. 
 
-| Language   | Time     |
-|------------|---------:|
-| C          | 0m0.177s |
-| C++ Spirit | 0m0.981s |
-| Go         | 0m1.561s |
-| Haskell    | 0m1.890s |
-| Java       | 0m0.781s |
-| Lua LPEG   | 0m1.139s |
-| Luajit FFI | 0m1.038s |
-| Python 2.7 | 0m0.532s |
-| Python 3.3 | 0m0.857s |
+| Language           | Time     |
+|--------------------|---------:|
+| C                  | 0m0.177s |
+| C++ Spirit         | 0m0.981s |
+| Go                 | 0m1.561s |
+| Haskell            | 0m1.890s |
+| Java (OpenCSV)     | 0m0.781s |
+| Lua LPEG           | 0m1.139s |
+| Luajit FFI         | 0m1.038s |
+| Python 2.7         | 0m0.532s |
+| Python 3.3         | 0m0.857s |
+| Scala (mighty-csv) | 0m1.109s |
 
 ## Notes
 C++ is using the Boost.Spirit library and not a specific library for parsing
