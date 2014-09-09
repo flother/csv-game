@@ -53,6 +53,8 @@ Lua is using a library for parsing LPEG grammars.
 
 Luajit FFI is using the C libcsv library through a foreign function interface.
 
+Haskell is using the Cassava library.
+
 ## Rudimentary Analysis
 
 Profiling the Go code, I can see that a lot of the time goes to Garbage
