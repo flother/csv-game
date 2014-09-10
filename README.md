@@ -24,9 +24,7 @@ or whatever.
 
 ## Disclaimer
 I don't claim that all of the implementations are representative of idiomatic
-code.  Particularly egregious is the Haskell code where I couldn't figure out
-how to count the fields in a row and so I hard coded it. I'd be happy for
-someone to contribute code to fix it.
+code.
 
 ## Timings
 
