@@ -6,6 +6,7 @@ import Data.Csv.Incremental
 import Data.Text
 import System.Exit
 import System.IO
+import qualified Data.List as DL
 
 
 main :: IO ()
@@ -18,10 +19,10 @@ main = withFile "/dev/stdin" ReadMode $ \ csvFile -> do
             isEof <- hIsEOF csvFile
             if isEof
                 then return $ k B.empty
-                else k `fmap` B.hGetSome csvFile 4096
+                else k `fmap` B.hGetSome csvFile 1024
     loop 0 (decode NoHeader :: Parser [Data.Text.Text])
   where
     countFields :: [Either String [a]] -> Int
-    countFields rs = sum $ Prelude.map (\fs -> case fs of 
-                                                Right fs' -> Prelude.length fs'
-                                                Left _    -> 0) rs
+    countFields rs = DL.foldl' (\acc fs -> case fs of 
+                                                Right fs' -> acc + Prelude.length fs'
+                                                Left _    -> acc) 0 rs
