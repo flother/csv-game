@@ -5,9 +5,6 @@ import qualified Data.ByteString as B
 import Data.Csv.Streaming
 import qualified Data.Foldable as F
 
-import System.Exit
-import System.IO
-
 getFieldCount csv = F.foldl' count 0 (decode NoHeader csv :: Records [B.ByteString])
   where
     count :: Int -> [a] -> Int
