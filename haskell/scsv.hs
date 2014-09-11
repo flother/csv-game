@@ -1,27 +1,21 @@
 {-# LANGUAGE BangPatterns, ScopedTypeVariables #-}
 
-import Control.Monad
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.ByteString as B
 import Data.Csv.Streaming
-import Data.Text
+import qualified Data.Foldable as F
 
 import System.Exit
 import System.IO
 
-loop !acc (Nil message _) = case message of 
-                                Just m -> putStrLn m >> exitFailure
-                                _      -> putStrLn (show acc) >> exitSuccess
-loop !acc (Cons (Right record) records) = {-# SCC "accumulationOK" #-} loop (acc + countFields record) records
-loop !acc (Cons (Left _) records) = loop acc records
-
-countFields :: [a] -> Int
-countFields xs = {-# SCC "length" #-} Prelude.length xs
-{-# INLINE countFields #-}
+getFieldCount csv = F.foldl' count 0 (decode NoHeader csv :: Records [B.ByteString])
+  where
+    count :: Int -> [a] -> Int
+    count acc fs = acc + (Prelude.length fs)
+    {-# INLINE count #-}
 
 main :: IO ()
 main = do
-    csvData <- BL.readFile "/dev/stdin" 
+    csvData <- BL.readFile "/dev/stdin"
+    putStrLn . show $ getFieldCount csvData
 
-
-    loop 0 (decode NoHeader csvData :: Records [B.ByteString]) 
