@@ -35,7 +35,7 @@ Here are some timings from my machine.
 | C                  | 0m0.177s |
 | C++ Spirit         | 0m0.981s |
 | Go                 | 0m1.561s |
-| Haskell            | 0m1.890s |
+| Haskell            | 0m1.353s |
 | Java (OpenCSV)     | 0m0.781s |
 | Lua LPEG           | 0m1.139s |
 | Luajit FFI         | 0m1.038s |
