@@ -39,6 +39,7 @@ Here are some timings from my machine.
 | Java (OpenCSV)     | 0m0.781s |
 | Lua LPEG           | 0m1.139s |
 | Luajit FFI         | 0m1.038s |
+| Perl (Text::CSV)   | 0m2.254s |
 | Python 2.7         | 0m0.532s |
 | Python 3.3         | 0m0.857s |
 | Scala (mighty-csv) | 0m1.109s |
