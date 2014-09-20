@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 use strict;
-use Text::CSV 1.000;
+use Text::CSV_XS 1.000;
 
 my @rows;
-my $csv = Text::CSV->new ( { binary => 1 } )  # should set binary attribute.
-    or die "Cannot use CSV: ".Text::CSV->error_diag ();
+my $csv = Text::CSV_XS->new ( { binary => 1 } )
+    or die "Cannot use CSV: ".Text::CSV_XS->error_diag ();
 
 open my $fh, "<:encoding(latin1)", "/dev/stdin" or die "stdin: $!";
 my $sum = 0;
