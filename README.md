@@ -42,6 +42,7 @@ Here are some timings from my machine.
 | Perl (Text::CSV\_XS)| 0m2.258s |
 | Python 2.7          | 0m0.532s |
 | Python 3.3          | 0m0.857s |
+| R                   | 0m2.050s |
 | Scala (mighty-csv)  | 0m1.109s |
 
 ## Notes
