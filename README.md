@@ -43,6 +43,7 @@ Here are some timings from my machine.
 | Python 2.7          | 0m0.532s |
 | Python 3.3          | 0m0.857s |
 | R                   | 0m2.050s |
+| Ruby                | 0m11.898s|
 | Scala (mighty-csv)  | 0m1.109s |
 
 ## Notes
