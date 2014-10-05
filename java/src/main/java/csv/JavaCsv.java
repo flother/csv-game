@@ -1,18 +1,18 @@
 package csv;
 
 import java.io.*;
-import au.com.bytecode.opencsv.CSVReader;
+import com.csvreader.CsvReader;
 
-public class Csv
+public class JavaCsv
 {
     public static void main( String[] args )
     {
         try {
-            CSVReader reader = new CSVReader(new FileReader("/dev/stdin"));
+            CsvReader reader = new CsvReader(new FileReader("/dev/stdin"));
             String [] nextLine;
             int sum = 0;
-            while ((nextLine = reader.readNext()) != null) {
-                sum += nextLine.length;
+            while (reader.readRecord()) {
+                sum += reader.getColumnCount();
             }
             System.out.println(sum);
         } catch (FileNotFoundException e) {

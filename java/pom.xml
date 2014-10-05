@@ -46,17 +46,96 @@
               </executions>
           </plugin>
       </plugins>
-      </build>
+  </build>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-    <dependency>
-        <groupId>net.sf.opencsv</groupId>
-        <artifactId>opencsv</artifactId>
-        <version>2.0</version>
-    </dependency>
+      <dependency>
+          <groupId>com.univocity</groupId>
+          <artifactId>univocity-parsers</artifactId>
+          <version>1.0.2</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.csveed</groupId>
+          <artifactId>csveed</artifactId>
+          <version>0.4.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-csv</artifactId>
+          <version>1.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.sf.flatpack</groupId>
+          <artifactId>flatpack</artifactId>
+          <version>3.4.2</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.sf.supercsv</groupId>
+          <artifactId>super-csv</artifactId>
+          <version>2.2.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.googlecode.jcsv</groupId>
+          <artifactId>jcsv</artifactId>
+          <version>1.4.0</version>
+      </dependency>
+
+
+      <dependency>
+          <groupId>net.sourceforge.javacsv</groupId>
+          <artifactId>javacsv</artifactId>
+          <version>2.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.espertech</groupId>
+          <artifactId>esperio-csv</artifactId>
+          <version>4.11.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>br.com.objectos</groupId>
+          <artifactId>way-io</artifactId>
+          <version>1.6.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.sf.opencsv</groupId>
+          <artifactId>opencsv</artifactId>
+          <version>2.3</version>
+      </dependency>
+
+      <dependency>
+          <groupId>genjava</groupId>
+          <artifactId>gj-csv</artifactId>
+          <version>1.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.quux00.simplecsv</groupId>
+          <artifactId>simplecsv</artifactId>
+          <version>2.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>jdom</groupId>
+          <artifactId>jdom</artifactId>
+          <version>1.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.beanio</groupId>
+          <artifactId>beanio</artifactId>
+          <version>2.1.0</version>
+      </dependency>
   </dependencies>
 </project>

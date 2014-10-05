@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # run 'mvn install' to install the project locally and then use this csv:
-# ./csv < /tmp/hello
+# ./UnivocityCsv < /tmp/hello
 
-bindir=$(realpath $(dirname $0))
+bindir=$(dirname $0)
 csv_path=$bindir/target/csv-1.0-SNAPSHOT-jar-with-dependencies.jar
-java -cp "${csv_path}" csv.Csv
+java -cp "${csv_path}" csv.UnivocityCsv
