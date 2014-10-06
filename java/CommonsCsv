@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # run 'mvn install' to install the project locally and then use this csv:
-# ./CSVeedCsv < /tmp/hello
+# ./CommonsCsv < /tmp/hello
 
 bindir=$(dirname $0)
 csv_path=$bindir/target/csv-1.0-SNAPSHOT-jar-with-dependencies.jar
-java -cp "${csv_path}" -Dlogback.configurationFile=$bindir/slf4j.xml csv.CSVeedCsv
+java -cp "${csv_path}" csv.CommonsCsv
