@@ -42,6 +42,7 @@ Here are some timings from my machine.
 | Java (JavaCSV)      | 0m0.697s |
 | Java (OpenCSV)      | 0m0.679s |
 | Java (UnivocityCSV) | 0m0.528s |
+| Julia (0.3.1)       | 0m3.639s |
 | Lua LPEG            | 0m1.139s |
 | Luajit FFI          | 0m1.038s |
 | Perl (Text::CSV\_XS)| 0m2.258s |
