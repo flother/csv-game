@@ -64,6 +64,10 @@ R reads the CSV file into a DataFrame and multiplies the product of the
 dimensions rather than counting each individual record.  This may be a bit
 cheaty.
 
+Julia works in a similar fashion to R and reads the CSV file into an
+Array{Any,2} and multiplies the product of the dimensions rather than counting
+each individual record. Like the R version, this might be a bit cheaty.
+
 ## Rudimentary Analysis
 
 Profiling the Go code, I can see that a lot of the time goes to Garbage
