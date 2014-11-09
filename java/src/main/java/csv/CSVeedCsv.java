@@ -9,6 +9,8 @@ public class CSVeedCsv
     {
         try {
             CsvClient<Row> reader = new CsvClientImpl<Row>(new FileReader("/dev/stdin"));
+            reader.setUseHeader(false);
+            reader.setSeparator(',');
             Row nextLine;
             int sum = 0;
             while ((nextLine = reader.readRow()) != null) {

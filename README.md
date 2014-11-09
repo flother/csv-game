@@ -32,11 +32,17 @@ Here are some timings from my machine.
 
 | Language            | Time     |
 |---------------------|---------:|
-| C                   | 0m0.177s |
-| C++ Spirit          | 0m0.981s |
+| C (libcsv)          | 0m0.177s |
+| C++ (Spirit)        | 0m0.981s |
 | Go                  | 0m1.561s |
-| Haskell             | 0m1.353s |
-| Java (OpenCSV)      | 0m0.781s |
+| Haskell (Cassava)   | 0m1.353s |
+| Java (BeanIO)       | 0m1.785s |
+| Java (CSVeed)       | 0m8.218s |
+| Java (CommonsCSV)   | 0m1.345s |
+| Java (JavaCSV)      | 0m0.697s |
+| Java (OpenCSV)      | 0m0.679s |
+| Java (UnivocityCSV) | 0m0.528s |
+| Julia (0.3.1)       | 0m3.639s |
 | Lua LPEG            | 0m1.139s |
 | Luajit FFI          | 0m1.038s |
 | Perl (Text::CSV\_XS)| 0m2.258s |
@@ -54,7 +60,13 @@ Lua is using a library for parsing LPEG grammars.
 
 Luajit FFI is using the C libcsv library through a foreign function interface.
 
-Haskell is using the Cassava library.
+R reads the CSV file into a DataFrame and multiplies the product of the
+dimensions rather than counting each individual record.  This may be a bit
+cheaty.
+
+Julia works in a similar fashion to R and reads the CSV file into an
+Array{Any,2} and multiplies the product of the dimensions rather than counting
+each individual record. Like the R version, this might be a bit cheaty.
 
 ## Rudimentary Analysis
 
