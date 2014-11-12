@@ -1,6 +1,9 @@
 package csv;
 
 import java.io.*;
+
+import com.univocity.parsers.common.*;
+import com.univocity.parsers.common.processor.*;
 import com.univocity.parsers.csv.*;
 
 public class UnivocityCsv
@@ -9,16 +12,23 @@ public class UnivocityCsv
     {
         try {
             CsvParserSettings settings = new CsvParserSettings();
-            CsvParser reader = new CsvParser(settings);
 
-            reader.beginParsing(new FileReader("/dev/stdin"));
+            //turning off features enabled by default
+            settings.setIgnoreLeadingWhitespaces(false);
+            settings.setIgnoreTrailingWhitespaces(false);
+            settings.setSkipEmptyLines(false);
+            settings.setColumnReorderingEnabled(false);
 
-            String [] nextLine;
-            int sum = 0;
-            while ((nextLine = reader.parseNext()) != null) {
-                sum += nextLine.length;
-            }
-            System.out.println(sum);
+            settings.setRowProcessor(new AbstractRowProcessor() {
+
+                @Override
+                public void processEnded(ParsingContext context){
+                    System.out.println(context.currentRecord());
+                }
+            });
+
+            CsvParser parser = new CsvParser(settings);
+            parser.parse(new FileReader("/dev/stdin"));
         } catch (FileNotFoundException e) {
         }
     }
