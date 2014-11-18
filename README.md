@@ -53,6 +53,7 @@ Here are some timings from my machine.
 | Lua LPEG            | 0m1.139s |
 | Luajit FFI          | 0m1.038s |
 | Perl (Text::CSV\_XS)| 0m2.258s |
+| PHP 5.5             | 0m2.576s |
 | Python 2.7          | 0m0.532s |
 | Python 3.3          | 0m0.857s |
 | R                   | 0m2.050s |
