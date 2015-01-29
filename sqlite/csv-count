@@ -1,0 +1,17 @@
+#!/bin/bash
+sqlite3 <<EOF
+create table counter (
+    one text,
+    two text,
+    three text,
+    four text,
+    five integer,
+    six text
+);
+
+.separator ","
+
+.import /tmp/count.csv counter
+
+select sum(five) from counter;
+EOF

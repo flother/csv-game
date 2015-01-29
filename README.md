@@ -2,14 +2,15 @@
 
 ## Introduction
 
-The CSV Game is a collection of examples of csv parsing programs which report
-the number of fields in a csv file. It began when I saw [this Rob Miller talk
-from GopherCon
+The CSV Game is a collection of examples of csv parsing programs which have two
+tests: report the number of fields in a csv file and take the sum of the values
+in a single column. It began when I saw [this Rob Miller talk from GopherCon
 2014](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH)
 about [Hekka](https://github.com/mozilla-services/heka) where he claims that Go
 is so slow at parsing CSV messages that they pass the over protocol buffers to a
 luajit process which parses the message and sends the data back over protocol
-buffers - and it's quicker than just reading it in Go ([14:45 in the video](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH#t=14m45)\).
+buffers - and it's quicker than just reading it in Go ([14:45 in the
+video](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH#t=14m45)\).
 I could hardly believe this so I wrote some sample code myself to check it.
 Sure enough, I found Go to be pretty slow at parsing CSV files.
 
@@ -21,6 +22,9 @@ versions in various languagues. So I've collected them here.
 
 2.  Either run `time csv < /tmp/hello.csv` or `time csv /tmp/hello.csv` 
 or whatever.
+
+3. For csv-count, run `time csv-count 5 /tmp/count.csv` where `5` is the column
+   to sum.
 
 ## Disclaimer
 I don't claim that all of the implementations are representative of idiomatic
@@ -34,7 +38,7 @@ contributions where a parser is configured to drop all features in the intent of
 
 ## Timings
 
-Here are some timings from my machine. 
+Here are some timings from my machine for the field count. 
 
 | Language            | Time     |
 |---------------------|---------:|
@@ -61,6 +65,21 @@ Here are some timings from my machine.
 | Rust                | 0m0.650s |
 | Scala (mighty-csv)  | 0m1.109s |
 
+Here are some timings for the column summer:
+
+| Language | Time |
+|----------------:|
+| C (libcsv)          | 0m0.177s |
+| Go                  | 0m1.611s |
+| Java (OpenCSV)      | 0m0.767s |
+| Java (UnivocityCSV) | 0m0.627s |
+| Lua LPEG            | 0m1.437s |
+| Luajit FFI          | 0m1.486s |
+| Perl (Text::CSV\_XS)| 0m2.519s |
+| Python 2.7          | 0m1.077s |
+| Ruby                | 0m11.924s|
+| SQLite3             | 0m1.834s |
+
 ## Notes
 C++ is using the Boost.Spirit library and not a specific library for parsing
 CSV.
@@ -76,6 +95,8 @@ cheaty.
 Julia works in a similar fashion to R and reads the CSV file into an
 Array{Any,2} and multiplies the product of the dimensions rather than counting
 each individual record. Like the R version, this might be a bit cheaty.
+
+SQLite makes a table and imports the csv file and then runs a query.
 
 ## Rudimentary Analysis
 

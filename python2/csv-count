@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+'''Read CSV file and print the number of fields'''
+
+import csv
+import sys
+
+field = int(sys.argv[1]) - 1 # We count fields from 1; but python from 0;
+print sum([int(row[field]) for row in csv.reader(open(sys.argv[2], 'r'))])
