@@ -65,7 +65,7 @@ Here are some timings from my machine for the field count.
 | Rust                | 0m0.650s |
 | Scala (mighty-csv)  | 0m1.109s |
 
-Here are some timings for the column summer:
+Here are some timings for the column summer.
 
 | Language            | Time     |
 |---------------------|---------:|
