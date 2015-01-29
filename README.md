@@ -41,7 +41,7 @@ contributions where a parser is configured to drop all features in the intent of
 Here are some timings from my machine for the field count. 
 
 | Language            | Time     |
-|---------------------|---------:|
+----------------------|----------:
 | C (libcsv)          | 0m0.177s |
 | C++ (Spirit)        | 0m0.981s |
 | Clojure (data.csv)  | 0m3.127s |
@@ -68,7 +68,7 @@ Here are some timings from my machine for the field count.
 Here are some timings for the column summer.
 
 | Language            | Time     |
-|---------------------|---------:|
+----------------------|----------:
 | C (libcsv)          | 0m0.177s |
 | Go                  | 0m1.611s |
 | Java (OpenCSV)      | 0m0.767s |
