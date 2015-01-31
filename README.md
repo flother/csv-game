@@ -43,7 +43,7 @@ Here are some timings from my machine for the field count.
 | Language            | Time     |
 ----------------------|----------:
 | C (libcsv)          | 0m0.177s |
-| C++ (Spirit)        | 0m0.981s |
+| C++ (Spirit)        | 0m0.229s |
 | Clojure (data.csv)  | 0m3.127s |
 | Go                  | 0m1.561s |
 | Haskell (Cassava)   | 0m1.353s |
