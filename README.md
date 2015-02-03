@@ -78,6 +78,7 @@ Here are some timings for the column summer.
 | Perl (Text::CSV\_XS)| 0m2.519s |
 | Python 2.7          | 0m1.077s |
 | Ruby                | 0m11.924s|
+| Rust                | 0m0.792s |
 | SQLite3             | 0m1.834s |
 
 ## Notes
