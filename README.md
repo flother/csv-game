@@ -36,6 +36,17 @@ As I don't claim that all the implementations are representative of idiomatic co
 welcome! However, keep in mind that I would like to keep this idiomatic so I will be very skeptical of 
 contributions where a parser is configured to drop all features in the intent of gaming results.
 
+## The Tests
+There are two tests. 
+
+1. `csvreader`: Count the number of fields in the file. This exercises the CSV processing library by forcing
+it to parse all the fields.
+
+2. `csv-count`: Take the sum of one of the columns in the file. This exercises the CSV parsing library, string 
+to integer parsing, and basic maths. I saw [textql](https://github.com/dinedal/textql) which slurps data into 
+sqlite and runs queries on the resulting database. I thought it's a cool idea, but could it possibly be 
+performant? This test would probably be better named as `csv-summer`
+
 ## Timings
 
 Here are some timings from my machine for the field count. 
@@ -65,7 +76,7 @@ Here are some timings from my machine for the field count.
 | Rust                | 0m0.650s |
 | Scala (mighty-csv)  | 0m1.109s |
 
-Here are some timings for the column summer.
+Here are some timings for the `csv-count` test.
 
 | Language            | Time     |
 ----------------------|----------:
@@ -103,3 +114,5 @@ SQLite makes a table and imports the csv file and then runs a query.
 
 Profiling the Go code, I can see that a lot of the time goes to Garbage
 collection. A lot of the time also goes to handling UFT8. 
+
+Slurping data into SQLite for interactive analysis isn't so bad, actually.
