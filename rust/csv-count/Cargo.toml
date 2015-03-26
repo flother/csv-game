@@ -1,12 +1,12 @@
 [package]
 
-name = "csv-count"
+name = "csv_count"
 version = "0.0.1"
 authors = [ "Your name <you@example.com>" ]
 
 [[bin]]
-
-name = "csv-count"
+name = "csv_count"
+path = "src/csv-count.rs"
 
 [dependencies]
 csv = "*"

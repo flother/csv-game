@@ -1,19 +1,21 @@
 extern crate csv;
 
-use std::path::Path;
-use std::os;
-
 fn main() {
-    let args = os::args();
-    let field = args[1].parse::<usize>().unwrap() - 1;
+    let args: Vec<String> = ::std::env::args().collect();
+    let field_num = args[1].parse::<usize>().unwrap() - 1;
     let filename = &args[2];
-    let fp = &Path::new(filename);
-    let mut rdr = csv::Reader::from_file(fp).has_headers(false);
+    let mut rdr = csv::Reader::from_file(filename).unwrap().has_headers(false);
     let mut sum = 0;
 
-    for row in rdr.decode() {
-        let cols : Vec<String> = row.unwrap();
-        sum += cols[field].parse::<i64>().unwrap();
+    while !rdr.done() {
+        let mut col = 0;
+        while let Some(field) = rdr.next_field().into_iter_result() {
+            if col == field_num {
+                let field_str = String::from_utf8_lossy(field.unwrap());
+                sum += field_str.parse::<i64>().unwrap();
+            }
+            col += 1;
+        }
     }
     println!("{}", sum);
 }
