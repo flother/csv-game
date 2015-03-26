@@ -53,7 +53,7 @@ Here are some timings from my machine for the field count.
 
 | Language            | Time     |
 ----------------------|----------:
-| C (libcsv)          | 0m0.177s |
+| C (libcsv)          | 0m0.136s |
 | C++ (Spirit)        | 0m0.229s |
 | Clojure (data.csv)  | 0m3.127s |
 | Go                  | 0m1.561s |
@@ -73,7 +73,7 @@ Here are some timings from my machine for the field count.
 | Python 3.3          | 0m0.857s |
 | R                   | 0m2.050s |
 | Ruby                | 0m11.898s|
-| Rust                | 0m0.650s |
+| Rust                | 0m0.330s |
 | Scala (mighty-csv)  | 0m1.109s |
 
 Here are some timings for the `csv-count` test.
@@ -89,7 +89,7 @@ Here are some timings for the `csv-count` test.
 | Perl (Text::CSV\_XS)| 0m2.519s |
 | Python 2.7          | 0m1.077s |
 | Ruby                | 0m11.924s|
-| Rust                | 0m0.792s |
+| Rust                | 0m0.379s |
 | SQLite3             | 0m1.834s |
 
 ## Notes
