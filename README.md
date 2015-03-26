@@ -74,6 +74,7 @@ Here are some timings from my machine for the field count.
 | R                   | 0m2.050s |
 | Ruby                | 0m11.898s|
 | Rust                | 0m0.330s |
+| Rust (libcsv)       | 0m0.136s |
 | Scala (mighty-csv)  | 0m1.109s |
 
 Here are some timings for the `csv-count` test.

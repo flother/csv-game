@@ -1,20 +1,14 @@
 #![feature(libc)]
-#![feature(os)]
-#![feature(old_io)]
-#![feature(old_path)]
 #![feature(core)]
 
 extern crate libc;
 
-use std::os;
-use std::mem;
-use std::ptr;
+use std::io::Read;
 use std::num::NumCast;
-use std::old_path::posix::Path;
-use std::old_io::{BufferedReader, Reader, File};
-use libc::{c_int, size_t, c_void};
+use std::ptr;
+use libc::{size_t, c_void};
 
-extern "C" fn field_count(str : *mut c_void, str_len : size_t, data : *mut i64) {
+extern "C" fn field_count(_ : *mut c_void, _ : size_t, data : *mut i64) {
     unsafe {
         *data = *data + 1;
     }
@@ -43,7 +37,7 @@ struct CSVParser {
 impl CSVParser {
     fn new() -> CSVParser{
         unsafe {
-            return mem::zeroed();
+            return ::std::mem::zeroed();
         }
     }
 }
@@ -59,37 +53,41 @@ extern {
 }
 
 fn main() {
-    let CSV_APPEND_NULL = 8;
+    const CSV_APPEND_NULL : u8 = 8;
     const READ_SZ : usize = 1024 * 1024;
 
-    let args = os::args();
+    let args : Vec<String> = ::std::env::args().collect();
     if args.len() < 2 {
         println!("Usage: csvreader <csv-file>");
         return;
     }
     let filename = &args[1];
-    let path = Path::new(filename);
-    let mut rdr = BufferedReader::new(File::open(&path));
+    let path = ::std::path::Path::new(filename);
+    let mut rdr = ::std::fs::File::open(&path).unwrap();
 
     let mut parser = CSVParser::new();
     unsafe { csv_init(&mut parser, CSV_APPEND_NULL); };
 
     let mut buf = [0; READ_SZ];
     let mut sum = 0;
-    while true {
+    loop {
         match rdr.read(&mut buf) {
+            Ok(0) => break,
             Ok(nread) => {
                 let pbuf = buf.as_mut_ptr();
                 unsafe {
                     csv_parse(&mut parser, 
                           pbuf, 
-                          NumCast::from(READ_SZ).unwrap(), 
+                          NumCast::from(nread).unwrap(), 
                           field_count, 
                           ptr::null::<c_void>(), 
                           &mut sum);
                 };
             },
-            Err(e) => break,
+            Err(e) => {
+                println!("Error reaidng file: {}", e); 
+                return;
+            }
         }
     }
     unsafe { csv_free(&mut parser); };
