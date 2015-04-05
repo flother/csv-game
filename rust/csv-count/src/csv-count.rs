@@ -7,14 +7,19 @@ fn main() {
     let mut rdr = csv::Reader::from_file(filename).unwrap().has_headers(false);
     let mut sum = 0;
 
-    while !rdr.done() {
-        let mut col = 0;
-        while let Some(field) = rdr.next_field().into_iter_result() {
-            if col == field_num {
-                let field_str = String::from_utf8_lossy(field.unwrap());
-                sum += field_str.parse::<i64>().unwrap();
+    let mut col = 0;
+    loop {
+        match rdr.next_bytes() {
+            csv::NextField::Data(field) => {
+                if col == field_num {
+                    let field_str = ::std::str::from_utf8(field).unwrap();
+                    sum += field_str.parse::<i64>().unwrap();
+                }
+                col += 1;
             }
-            col += 1;
+            csv::NextField::EndOfRecord => { col = 0; }
+            csv::NextField::EndOfCsv => break,
+            csv::NextField::Error(err) => panic!("{}", err),
         }
     }
     println!("{}", sum);
