@@ -1,14 +1,15 @@
 extern crate csv;
 
 fn main() {
-    let args: Vec<String> = ::std::env::args().collect();
-    let filename = &args[1];
-    let mut rdr = csv::Reader::from_file(filename).unwrap().has_headers(false);
+    let fpath = ::std::env::args().nth(1).unwrap();
+    let mut rdr = csv::Reader::from_file(fpath).unwrap().has_headers(false);
     let mut sum = 0;
-
-    while !rdr.done() {
-        while let Some(_) = rdr.next_field().into_iter_result() {
-            sum += 1;
+    loop {
+        match rdr.next_bytes() {
+            csv::NextField::Data(_) => sum += 1,
+            csv::NextField::EndOfRecord => {}
+            csv::NextField::EndOfCsv => break,
+            csv::NextField::Error(err) => panic!("{}", err),
         }
     }
     println!("{}", sum);

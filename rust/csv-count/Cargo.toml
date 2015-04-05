@@ -5,8 +5,12 @@ version = "0.0.1"
 authors = [ "Your name <you@example.com>" ]
 
 [[bin]]
-name = "csv_count"
+name = "csv-count"
 path = "src/csv-count.rs"
 
 [dependencies]
 csv = "*"
+
+[profile.release]
+opt-level = 3
+lto = true
