@@ -67,6 +67,7 @@ Here are some timings from my machine for the field count.
 | Julia (0.3.1)       | 0m3.639s |
 | Lua LPEG            | 0m1.139s |
 | Luajit FFI          | 0m1.038s |
+| Ocaml               | 0m0.474s |
 | Perl (Text::CSV\_XS)| 0m2.258s |
 | PHP 5.5             | 0m2.576s |
 | Python 2.7          | 0m0.532s |
@@ -87,6 +88,7 @@ Here are some timings for the `csv-count` test.
 | Java (UnivocityCSV) | 0m0.627s |
 | Lua LPEG            | 0m1.437s |
 | Luajit FFI          | 0m1.486s |
+| Ocaml               | 0m0.522s |
 | Perl (Text::CSV\_XS)| 0m2.519s |
 | Python 2.7          | 0m1.077s |
 | Ruby                | 0m11.924s|
