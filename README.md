@@ -56,7 +56,7 @@ Here are some timings from my machine for the field count.
 | C (libcsv)          | 0m0.136s |
 | C++ (Spirit)        | 0m0.229s |
 | Clojure (data.csv)  | 0m3.127s |
-| Go                  | 0m1.561s |
+| Go (Go 1.5)         | 0m1.225s |
 | Haskell (Cassava)   | 0m1.353s |
 | Java (BeanIO)       | 0m1.785s |
 | Java (CSVeed)       | 0m8.218s |
@@ -83,7 +83,7 @@ Here are some timings for the `csv-count` test.
 | Language            | Time     |
 ----------------------|----------:
 | C (libcsv)          | 0m0.177s |
-| Go                  | 0m1.611s |
+| Go (Go 1.5)         | 0m1.383s |
 | Java (OpenCSV)      | 0m0.767s |
 | Java (UnivocityCSV) | 0m0.627s |
 | Lua LPEG            | 0m1.437s |
