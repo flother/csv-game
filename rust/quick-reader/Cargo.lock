@@ -1,0 +1,20 @@
+[root]
+name = "quick-reader"
+version = "0.0.1"
+dependencies = [
+ "quick-csv 0.1.0 (git+https://github.com/tafia/quick-csv.git)",
+]
+
+[[package]]
+name = "quick-csv"
+version = "0.1.0"
+source = "git+https://github.com/tafia/quick-csv.git#c1913fd10a31f63b2b40018734955d3e8f8d93da"
+dependencies = [
+ "rustc-serialize 0.3.16 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "rustc-serialize"
+version = "0.3.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
