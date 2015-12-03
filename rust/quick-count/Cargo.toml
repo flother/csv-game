@@ -8,7 +8,8 @@ authors = [ "Your name <you@example.com>" ]
 name = "quick-count"
 
 [dependencies.quick-csv]
-git="https://github.com/tafia/quick-csv.git"
+# git="https://github.com/tafia/quick-csv.git"
+path="/home/johann/projects/quick-csv"
 
 [profile.release]
 opt-level = 3
