@@ -7,8 +7,9 @@ fn main() {
     let rdr = csv::Csv::from_file(filename).unwrap();
 
     let sum = rdr.into_iter()
-                 .map(|r| r.unwrap().columns().unwrap()
-                           .nth(field_num).unwrap().parse::<i64>().unwrap())
+                 .map(|r| r.unwrap().bytes_columns().nth(field_num)
+                      .and_then(|c| ::std::str::from_utf8(c).ok())
+                      .and_then(|s| s.parse::<i64>().ok()).unwrap())
                  .fold(0i64, |c, n| c + n);
 
     println!("{}", sum);

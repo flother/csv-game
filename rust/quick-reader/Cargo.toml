@@ -7,9 +7,8 @@ authors = [ "Johann Tuffe <tafia973@gmail.com>" ]
 [[bin]]
 name = "quick-reader"
 
-[dependencies.quick-csv]
-# git="https://github.com/tafia/quick-csv.git"
-path="/home/johann/projects/quick-csv"
+[dependencies]
+quick-csv = "0.1"
 
 [profile.release]
 opt-level = 3
