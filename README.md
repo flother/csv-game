@@ -74,7 +74,8 @@ Here are some timings from my machine for the field count.
 | Python 3.3          | 0m0.857s |
 | R                   | 0m2.050s |
 | Ruby                | 0m11.898s|
-| Rust                | 0m0.135s |
+| Rust (csv)          | 0m0.135s |
+| Rust (quick)        | 0m0.099s |
 | Rust (libcsv)       | 0m0.136s |
 | Scala (mighty-csv)  | 0m1.109s |
 
@@ -92,7 +93,8 @@ Here are some timings for the `csv-count` test.
 | Perl (Text::CSV\_XS)| 0m2.519s |
 | Python 2.7          | 0m1.077s |
 | Ruby                | 0m11.924s|
-| Rust                | 0m0.172s |
+| Rust (csv)          | 0m0.172s |
+| Rust (quick)        | 0m0.138s |
 | SQLite3             | 0m1.834s |
 
 ## Notes
