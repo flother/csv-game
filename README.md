@@ -105,6 +105,8 @@ Lua is using a library for parsing LPEG grammars.
 
 Luajit FFI is using the C libcsv library through a foreign function interface.
 
+Rust quick-csv doesn't escape quotes correctly and not treat `"foo""bar"` as `"foo"bar"`as per item 7 in [RFC-4180](https://www.rfc-editor.org/rfc/rfc4180.txt).
+
 R reads the CSV file into a DataFrame and multiplies the product of the
 dimensions rather than counting each individual record.  This may be a bit
 cheaty.
