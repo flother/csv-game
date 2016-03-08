@@ -7,7 +7,7 @@ tests: report the number of fields in a csv file and take the sum of the values
 in a single column. It began when I saw [this Rob Miller talk from GopherCon
 2014](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH)
 about [Hekka](https://github.com/mozilla-services/heka) where he claims that Go
-is so slow at parsing CSV messages that they pass the over protocol buffers to a
+is so slow at parsing CSV messages that they pass the data over protocol buffers to a
 luajit process which parses the message and sends the data back over protocol
 buffers - and it's quicker than just reading it in Go ([14:45 in the
 video](https://www.youtube.com/watch?v=RhLIblr_YXs&index=6&list=PLEireDfbBiXYxLvhLBHi8EX_HigEplHDH#t=14m45)\).
