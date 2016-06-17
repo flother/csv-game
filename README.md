@@ -33,7 +33,7 @@ code.
 ## Contributing
 
 As I don't claim that all the implementations are representative of idiomatic code, PRs are most certainly
-welcome! However, keep in mind that I would like to keep this idiomatic so I will be very skeptical of 
+welcome! However, keep in mind that I would like to keep the code plausible so I will be very skeptical of 
 contributions where a parser is configured to drop all features in the intent of gaming results.
 
 ## The Tests
