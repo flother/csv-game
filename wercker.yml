@@ -10,7 +10,7 @@ build:
 
     - install-packages:
       checkpoint: pkgs
-      packages: r-base r-base-dev libopenblas-base ocaml openjdk-7-jdk openjdk-7-jre build-essential python python3 lua5.2 luajit golang ghc ruby libboost-dev libcsv-dev libcsv
+      packages: r-base r-base-dev libopenblas-base ocaml openjdk-7-jdk openjdk-7-jre build-essential python python3 lua5.2 luajit golang ghc ruby libboost-dev libcsv-dev
 
       #- pip-install:
       #- requirements_file: ""
