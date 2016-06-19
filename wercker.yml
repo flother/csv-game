@@ -27,3 +27,9 @@ build:
           cd c
           ./build.sh
           cd ..
+    - script:
+      name: run c++-spirit
+      code: |
+          cd c++-spirit
+          ./build.sh
+          cd ..
