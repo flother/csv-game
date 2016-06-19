@@ -1,6 +1,6 @@
 ---
-box: 
-  id: ehiggs/csv-game:v2
+box:
+  id: ehiggs/csv-game:v5
 
 build:
   steps:
@@ -73,7 +73,7 @@ build:
     - script:
       name: run perl
       code: |
-        cd perl 
+        cd perl
         ./build.sh
         cd ..
     - script:
