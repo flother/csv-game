@@ -25,6 +25,5 @@ build:
       name: run c
       code: |
           cd c
-          make
           ./build.sh
           cd ..
