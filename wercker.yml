@@ -33,3 +33,21 @@ build:
           cd c++-spirit
           ./build.sh
           cd ..
+    - script:
+      name: run python2
+      code: |
+          cd python2
+          ./build.sh
+          cd ..
+    - script:
+      name: run python3
+      code: |
+          cd python3
+          ./build.sh
+          cd ..
+    - script:
+      name: run R
+      code: |
+          cd R
+          ./build.sh
+          cd ..
