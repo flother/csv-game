@@ -1,21 +1,10 @@
 ---
 box: 
-  id: debian
+  id: ehiggs/csv-game:v1
 
 build:
   steps:
-    - script: 
-      name: apt-get update
-      code: apt-get update
-
-    - install-packages:
-      checkpoint: pkgs
-      packages: r-base r-base-dev libopenblas-base ocaml openjdk-7-jdk openjdk-7-jre build-essential python python3 lua5.2 luajit golang ghc ruby libboost-dev libcsv-dev maven
-
-      #- pip-install:
-      #- requirements_file: ""
-      #- package_list: "pandas"
-
+  # packages should come with the Dockerfile.
     - script:
       name: Generate test data
       code: |
