@@ -1,0 +1,30 @@
+---
+box: 
+  id: debian
+
+build:
+  steps:
+    - script: 
+      name: apt-get update
+      code: apt-get update
+
+    - install-packages:
+      checkpoint: pkgs
+      packages: r-base r-base-dev libopenblas-base ocaml openjdk-7-jdk openjdk-7-jre build-essential python python3 lua5.2 luajit golang ghc ruby libboost-dev
+
+      #- pip-install:
+      #- requirements_file: ""
+      #- package_list: "pandas"
+
+    - script:
+      name: run c
+      code: |
+        ./test/generate_test.sh
+
+    - script:
+      name: run c
+      code: |
+          cd c
+          make
+          ./build.sh
+          cd ..
