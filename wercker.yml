@@ -1,6 +1,6 @@
 ---
 box: 
-  id: ehiggs/csv-game:v1
+  id: ehiggs/csv-game:v2
 
 build:
   steps:
