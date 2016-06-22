@@ -70,3 +70,27 @@ build:
         cd java
         ./build.sh
         cd ..
+    - script:
+      name: run perl
+      code: |
+        cd perl 
+        ./build.sh
+        cd ..
+    - script:
+      name: run haskell
+      code: |
+        cd haskell
+        ./build.sh
+        cd ..
+    - script:
+      name: run clojure
+      code: |
+        cd clojure
+        ./build.sh
+        cd ..
+    - script:
+      name: run julia
+      code: |
+        cd julia
+        ./build.sh
+        cd ..
