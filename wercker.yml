@@ -94,3 +94,15 @@ build:
         cd julia
         ./build.sh
         cd ..
+    - script:
+      name: run rust
+      code: |
+        cd rust 
+        ./build.sh
+        cd ..
+    - script:
+      name: run ocaml
+      code: |
+        cd ocaml 
+        ./build.sh
+        cd ..
