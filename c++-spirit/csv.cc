@@ -29,6 +29,7 @@ struct counter : std::binary_function<iterator_t, const iterator_t &,void>
 
 int main()
 {
+    std::ios_base::sync_with_stdio(false);
     size_t n = 0;
     counter c(n);
 

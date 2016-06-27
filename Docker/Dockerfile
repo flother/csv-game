@@ -15,8 +15,9 @@ ENV RUBY_DEPS="ruby"
 ENV LUA_DEPS="lua5.1 luajit luarocks"
 ENV GOLANG_DEPS="golang"
 ENV HASKELL_DEPS="ghc libghc-text-dev libghc-cassava-dev"
-ENV OCAML_DEPS="ocaml"
+ENV OCAML_DEPS="ocaml ocaml-findlib"
 ENV JULIA_DEPS="julia"
+ENV PHP_DEPS="php5"
 
 # General tools
 RUN apt-get update && \
@@ -37,6 +38,7 @@ RUN apt-get update && \
        $HASKELL_DEPS \
        $OCAML_DEPS \
        $JULIA_DEPS \
+       $PHP_DEPS \
        -qqy \
        --no-install-recommends \ 
        && rm -rf /var/lib/apt/lists/*

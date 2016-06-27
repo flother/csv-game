@@ -1,5 +1,6 @@
 #!/bin/bash
 make
+TIMEFORMAT='c++,spirit,%R'
 for i in $(seq 1 10); do 
-    time ./csv < /tmp/hello.csv
+    (time ./csv < /tmp/hello.csv) 2>> ../results.csv
 done

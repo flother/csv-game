@@ -1,5 +1,5 @@
 ---
-box: 
+box:
   id: ehiggs/csv-game:v5
 
 build:
@@ -8,89 +8,80 @@ build:
     - script:
       name: Generate test data
       code: |
+        echo "Bash Version: $BASH_VERSION"
         ./test/generate_test.sh
-
     - script:
       name: run c
       code: |
-          cd c
-          ./build.sh
-          cd ..
+        cd c && ./build.sh && cd ..
     - script:
       name: run c++-spirit
       code: |
-          cd c++-spirit
-          ./build.sh
-          cd ..
+        cd c++-spirit && ./build.sh && cd ..
+    - script:
+      name: run c++-tokenizer
+      code: |
+        cd c++-tokenizer && ./build.sh && cd ..
     - script:
       name: run python2
       code: |
-          cd python2
-          ./build.sh
-          cd ..
+        cd python2 && ./build.sh && cd ..
     - script:
       name: run python3
       code: |
-          cd python3
-          ./build.sh
-          cd ..
+        cd python3 && ./build.sh && cd ..
     - script:
       name: run R
       code: |
-          cd R
-          ./build.sh
-          cd ..
+        cd R && ./build.sh && cd ..
     - script:
       name: run go
       code: |
-        cd go
-        ./build.sh
-        cd ..
+        cd go && ./build.sh && cd ..
     - script:
       name: run lua-lpeg
       code: |
-        cd lua-lpeg
-        ./build.sh
-        cd ..
+        cd lua-lpeg && ./build.sh && cd ..
     - script:
       name: run luajit-ffi
       code: |
-        cd luajit-ffi
-        ./build.sh
-        cd ..
+        cd luajit-ffi && ./build.sh && cd ..
     - script:
       name: run ruby
       code: |
-        cd ruby
-        ./build.sh
-        cd ..
+        cd ruby && ./build.sh && cd ..
     - script:
       name: run java
       code: |
-        cd java
-        ./build.sh
-        cd ..
+        cd java && ./build.sh && cd ..
     - script:
       name: run perl
       code: |
-        cd perl 
-        ./build.sh
-        cd ..
+        cd perl && ./build.sh && cd ..
     - script:
       name: run haskell
       code: |
-        cd haskell
-        ./build.sh
-        cd ..
+        cd haskell && ./build.sh && cd ..
     - script:
       name: run clojure
       code: |
-        cd clojure
-        ./build.sh
-        cd ..
+        cd clojure && ./build.sh && cd ..
     - script:
       name: run julia
       code: |
-        cd julia
-        ./build.sh
-        cd ..
+        cd julia && ./build.sh && cd ..
+    - script:
+      name: run rust
+      code: |
+        cd rust && ./build.sh && cd ..
+    #- script:
+    #  name: run ocaml
+    #  code: |
+    #    cd ocaml && ./build.sh && cd ..
+    #- script:
+    #  name: run php
+    #  code: |
+    #    cd php && ./build.sh && cd ..
+    - script:
+      name: dump results
+      code: cat results.csv
