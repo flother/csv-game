@@ -78,10 +78,10 @@ build:
     #  name: run ocaml
     #  code: |
     #    cd ocaml && ./build.sh && cd ..
-    #- script:
-    #  name: run php
-    #  code: |
-    #    cd php && ./build.sh && cd ..
+    - script:
+      name: run php
+      code: |
+        cd php && ./build.sh && cd ..
     - script:
       name: dump results
       code: cat results.csv

@@ -15,7 +15,7 @@ ENV RUBY_DEPS="ruby"
 ENV LUA_DEPS="lua5.1 luajit luarocks"
 ENV GOLANG_DEPS="golang"
 ENV HASKELL_DEPS="ghc libghc-text-dev libghc-cassava-dev"
-ENV OCAML_DEPS="ocaml ocaml-findlib"
+ENV OCAML_DEPS="ocaml opam"
 ENV JULIA_DEPS="julia"
 ENV PHP_DEPS="php5"
 
@@ -46,6 +46,7 @@ RUN apt-get update && \
 RUN pip install pandas
 RUN luarocks install lpeg
 RUN cpan install perl Text::CSV_XS
+RUN opam init && opam install -y csv
 
 RUN mkdir /rust
 RUN pwd
