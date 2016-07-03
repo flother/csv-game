@@ -39,7 +39,7 @@ As I don't claim that all the implementations are representative of idiomatic co
 ## The Tests
 There are two tests. 
 
-1. `fieldcount`: Count the number of fields in the file. This exercises the CSV processing library by forcing it to parse all the fields. There is a separate run called `empty` which is used as an attempt to tease out the performance of the actual CSV parsing from the startup for the runtime. 
+1. `fieldcount`: Count the number of fields in the file. This exercises the CSV processing library by forcing it to parse all the fields. There is a separate run called `empty` which runs against an empty file and it used as an attempt to tease out the performance of the actual CSV parsing from the startup for the runtime (importing modules, loading libraries, instantiating structures, etc). 
 
 2. `csv-count`: Take the sum of one of the columns in the file. This exercises the CSV parsing library, string to integer parsing, and basic maths. I saw [textql](https://github.com/dinedal/textql) which slurps data into sqlite and runs queries on the resulting database. I thought it's a cool idea, but could it possibly be performant? This test would probably be better named as `csv-summer`
 
@@ -47,33 +47,33 @@ There are two tests.
 
 Here are some timings from whatever virtual machine/container system runs on [Wercker](https://app.wercker.com/#ehiggs/csv-game/build/5779804f3ec144923a007af6) for the `fieldcount`. 
 
-| Language |Library        |Time      | fieldcount-empty |
----------------------------|----------|------------------:
-|R         |dataframe      |0m2.581   |0m2.480           |
-|c         |libcsv         |0m0.131   |0m0.130           |
-|C++       |spirit         |0m0.212   |0m0.211           |
-|C++       |tokenizer      |0m1.360   |0m1.359           |
-|Clojure   |csv            |0m3.349   |0m2.245           |
-|Golang    |csv            |0m1.318   |0m1.317           |
-|Haskell   |cassava        |0m1.330   |0m1.329           |
-|Java      |BeanIOCsv      |0m2.931   |0m2.840           |
-|Java      |CSVeedCsv      |0m15.186  |0m14.790          |
-|Java      |CommonsCsv     |0m1.879   |0m1.786           |
-|Java      |JavaCsv        |0m1.133   |0m1.038           |
-|Java      |OpenCsv        |0m1.177   |0m1.087           |
-|Java      |UnivocityCsv   |0m1.016   |0m0.906           |
-|Julia     |dataframe      |0m3.504   |0m1.709           |
-|Lua       |lpeg           |0m1.050   |0m1.049           |
-|Luajit    |libcsv         |0m0.987   |0m0.986           |
-|Perl      |Text::CSV_XS   |0m2.274   |0m2.251           |
-|Php       |csv            |0m2.233   |0m2.225           |
-|Python2   |csv (stdlib)   |0m0.376   |0m0.367           |
-|Python2   |pandas         |0m0.963   |0m0.735           |
-|python3   |csv (stdlib)   |0m0.527   |0m0.508           |
-|Ruby      |csv (stdlib)   |0m10.376  |0m10.340          |
+| Language |Library        |Time      | Time sans startup|
+-----------|---------------|----------|------------------:
+|Rust      |quick          |0m0.133   |0m0.124           |
 |Rust      |csv            |0m0.133   |0m0.126           |
 |Rust      |libcsv         |0m0.137   |0m0.127           |
-|Rust      |quick          |0m0.133   |0m0.124           |
+|C         |libcsv         |0m0.131   |0m0.130           |
+|C++       |spirit         |0m0.212   |0m0.211           |
+|Python2   |csv (stdlib)   |0m0.376   |0m0.367           |
+|Python2   |pandas         |0m0.963   |0m0.735           |
+|Python3   |csv (stdlib)   |0m0.527   |0m0.508           |
+|Java      |UnivocityCsv   |0m1.016   |0m0.906           |
+|Luajit    |libcsv         |0m0.987   |0m0.986           |
+|Java      |JavaCsv        |0m1.133   |0m1.038           |
+|Java      |OpenCsv        |0m1.177   |0m1.087           |
+|Lua       |lpeg           |0m1.050   |0m1.049           |
+|Golang    |csv            |0m1.318   |0m1.317           |
+|Haskell   |cassava        |0m1.330   |0m1.329           |
+|C++       |tokenizer      |0m1.360   |0m1.359           |
+|Julia     |dataframe      |0m3.504   |0m1.709           |
+|Java      |CommonsCsv     |0m1.879   |0m1.786           |
+|Clojure   |csv            |0m3.349   |0m2.245           |
+|Perl      |Text::CSV_XS   |0m2.274   |0m2.251           |
+|php       |csv            |0m2.233   |0m2.225           |
+|R         |dataframe      |0m2.581   |0m2.480           |
+|Java      |BeanIOCsv      |0m2.931   |0m2.840           |
+|Ruby      |csv (stdlib)   |0m10.376  |0m10.340          |
+|Java      |CSVeedCsv      |0m15.186  |0m14.790          |
 
 Here are some timings for the `csv-count` test (which are old and haven't been added to the Continuous Integration).
 
