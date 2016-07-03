@@ -1,9 +1,12 @@
 #!/bin/bash
+source ../build.sh
 for SCRIPT in csvreader libcsv-reader quick-reader; do 
   echo $SCRIPT
-  TIMEFORMAT="rust,$SCRIPT,%R"
   (cd $SCRIPT && cargo build --release)
-  for i in $(seq 1 10); do 
-      (time $SCRIPT/target/release/$SCRIPT /tmp/hello.csv) 2>> ../results.csv
-  done
 done
+timer ../results.csv rust csvreader fieldcount "./csvreader/target/release/csvreader /tmp/hello.csv"
+timer ../results.csv rust csvreader empty "./csvreader/target/release/csvreader /tmp/empty.csv"
+timer ../results.csv rust libcsv-reader fieldcount "./libcsv-reader/target/release/csvreader /tmp/hello.csv"
+timer ../results.csv rust libcsv-reader empty "./libcsv-reader/target/release/csvreader /tmp/empty.csv"
+timer ../results.csv rust quick-reader fieldcount "./quick-reader/target/release/quick-reader /tmp/hello.csv"
+timer ../results.csv rust quick-reader empty "./quick-reader/target/release/quick-reader /tmp/empty.csv"

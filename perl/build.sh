@@ -1,5 +1,4 @@
 #!/bin/bash
-TIMEFORMAT='perl,Text::CSV_XS,%R'
-for i in $(seq 1 10); do 
-    (time ./csv.pl < /tmp/hello.csv) 2>> ../results.csv
-done
+source ../build.sh
+timer ../results.csv perl "Text::CSV_XS" fieldcount "./csv.pl < /tmp/hello.csv"
+timer ../results.csv perl "Text::CSV_XS" empty "./csv.pl < /tmp/empty.csv"

@@ -1,6 +1,5 @@
 #!/bin/bash
-make
-TIMEFORMAT='c,libcsv,%R'
-for i in $(seq 1 10); do 
-    (time ./csv /tmp/hello.csv) 2>> ../results.csv
-done
+source  ../build.sh
+make 
+timer ../results.csv c libcsv fieldcount "./csv /tmp/hello.csv"
+timer ../results.csv c libcsv empty "./csv /tmp/empty.csv"

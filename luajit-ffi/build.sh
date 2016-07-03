@@ -1,5 +1,4 @@
 #!/bin/bash
-TIMEFORMAT='luajit,libcsv,%R'
-for i in $(seq 1 10); do 
-    (time ./csv.lua < /tmp/hello.csv) 2>> ../results.csv
-done
+source ../build.sh
+timer ../results.csv luajit libcsv fieldcount "./csv.lua < /tmp/hello.csv"
+timer ../results.csv luajit libcsv empty "./csv.lua < /tmp/empty.csv"

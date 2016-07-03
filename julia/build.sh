@@ -1,5 +1,4 @@
 #!/bin/bash
-TIMEFORMAT='julia,dataframe,%R'
-for i in $(seq 1 10); do 
-    (time ./csv.jl < /tmp/hello.csv) 2>> ../results.csv
-done
+source ../build.sh
+timer ../results.csv julia dataframe fieldcount "./csv.jl < /tmp/hello.csv"
+timer ../results.csv julia dataframe empty "./csv.jl < /tmp/empty.csv"

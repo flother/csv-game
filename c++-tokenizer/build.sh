@@ -1,6 +1,5 @@
 #!/bin/bash
+source ../build.sh
 make
-TIMEFORMAT='c++,tokenizer,%R'
-for i in $(seq 1 10); do 
-    (time ./csv < /tmp/hello.csv) 2>> ../results.csv
-done
+timer ../results.csv c++ tokenizer fieldcount "./csv < /tmp/hello.csv"
+timer ../results.csv c++ tokenizer empty "./csv < /tmp/empty.csv"

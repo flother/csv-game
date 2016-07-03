@@ -4,5 +4,8 @@
 import pandas as p
 import sys
 
-df = p.read_csv(sys.stdin, header=None)
-print df.shape[0] * df.shape[1]
+try:
+    df = p.read_csv(sys.stdin, header=None)
+    print df.shape[0] * df.shape[1]
+except p.io.common.EmptyDataError as e:
+    print 0

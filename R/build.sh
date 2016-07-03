@@ -1,5 +1,4 @@
 #!/bin/bash
-TIMEFORMAT='R,dataframe,%R'
-for i in $(seq 1 10); do 
-    (time ./csv.R < /tmp/hello.csv) 2>> ../results.csv
-done
+source ../build.sh
+timer ../results.csv R dataframe fieldcount "./csv.R < /tmp/hello.csv"
+timer ../results.csv R dataframe empty "./csv.R < /tmp/empty.csv"

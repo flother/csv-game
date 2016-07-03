@@ -1,7 +1,6 @@
 #!/bin/bash
-for SCRIPT in csvreader.py csvreader-pandas.py ; do 
-  TIMEFORMAT="python2,$SCRIPT,%R"
-  for i in $(seq 1 10); do 
-      (time ./"$SCRIPT" < /tmp/hello.csv) 2>> ../results.csv
-  done
-done
+source ../build.sh
+timer ../results.csv python2 csv fieldcount "./csvreader.py < /tmp/hello.csv"
+timer ../results.csv python2 csv empty "./csvreader.py < /tmp/empty.csv"
+timer ../results.csv python2 pandas fieldcount "./csvreader-pandas.py < /tmp/hello.csv"
+timer ../results.csv python2 pandas empty "./csvreader-pandas.py < /tmp/empty.csv"

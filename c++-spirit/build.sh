@@ -1,6 +1,5 @@
 #!/bin/bash
+source ../build.sh
 make
-TIMEFORMAT='c++,spirit,%R'
-for i in $(seq 1 10); do 
-    (time ./csv < /tmp/hello.csv) 2>> ../results.csv
-done
+timer ../results.csv c++ spirit fieldcount "./csv < /tmp/hello.csv"
+timer ../results.csv c++ spirit empty "./csv < /tmp/empty.csv"

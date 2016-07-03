@@ -1,5 +1,4 @@
 #!/bin/bash
-TIMEFORMAT='php,csv,%R'
-for i in $(seq 1 10); do 
-    (time ./csv.php < /tmp/hello.csv) 2>> ../results.csv
-done
+source ../build.sh
+timer ../results.csv php csv fieldcount "./csv.php < /tmp/hello.csv"
+timer ../results.csv php csv empty "./csv.php < /tmp/empty.csv"

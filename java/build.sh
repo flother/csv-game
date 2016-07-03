@@ -1,9 +1,15 @@
 #!/bin/bash
+source ../build.sh
 mvn package
-for SCRIPT in BeanIOCsv CommonsCsv CSVeedCsv JavaCsv OpenCsv UnivocityCsv; do 
-  echo $SCRIPT
-  TIMEFORMAT="java,$SCRIPT,%R"
-  for i in $(seq 1 10); do 
-    (time ./$SCRIPT < /tmp/hello.csv) 2>> ../results.csv
-  done
-done
+timer ../results.csv java BeanIOCsv fieldcount "./BeanIOCsv < /tmp/hello.csv"
+timer ../results.csv java BeanIOCsv empty "./BeanIOCsv < /tmp/empty.csv"
+timer ../results.csv java CommonsCsv fieldcount "./CommonsCsv < /tmp/hello.csv"
+timer ../results.csv java CommonsCsv empty "./CommonsCsv < /tmp/empty.csv"
+timer ../results.csv java CSVeedCsv fieldcount "./CSVeedCsv < /tmp/hello.csv"
+timer ../results.csv java CSVeedCsv empty "./CSVeedCsv < /tmp/empty.csv"
+timer ../results.csv java JavaCsv fieldcount "./JavaCsv < /tmp/hello.csv"
+timer ../results.csv java JavaCsv empty "./JavaCsv < /tmp/empty.csv"
+timer ../results.csv java OpenCsv fieldcount "./OpenCsv < /tmp/hello.csv"
+timer ../results.csv java OpenCsv empty "./OpenCsv < /tmp/empty.csv"
+timer ../results.csv java UnivocityCsv fieldcount "./UnivocityCsv < /tmp/hello.csv"
+timer ../results.csv java UnivocityCsv empty "./UnivocityCsv < /tmp/empty.csv"
