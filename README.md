@@ -26,60 +26,56 @@ or whatever.
 3. For csv-count, run `time csv-count 5 /tmp/count.csv` where `5` is the column
    to sum.
 
+4. Alternatively, pull down [the 901MB docker image](https://hub.docker.com/r/ehiggs/csv-game/) and run them using `wercker build`.
+
 ## Disclaimer
 I don't claim that all of the implementations are representative of idiomatic
 code.
 
 ## Contributing
 
-As I don't claim that all the implementations are representative of idiomatic code, PRs are most certainly
-welcome! However, keep in mind that I would like to keep the code plausible so I will be very skeptical of 
-contributions where a parser is configured to drop all features in the intent of gaming results.
+As I don't claim that all the implementations are representative of idiomatic code, PRs are most certainly welcome! However, keep in mind that I would like to keep the code plausible so I will be very skeptical of contributions where a parser is configured to drop all features in the intent of gaming results.
 
 ## The Tests
 There are two tests. 
 
-1. `csvreader`: Count the number of fields in the file. This exercises the CSV processing library by forcing
-it to parse all the fields.
+1. `fieldcount`: Count the number of fields in the file. This exercises the CSV processing library by forcing it to parse all the fields. There is a separate run called `empty` which is used as an attempt to tease out the performance of the actual CSV parsing from the startup for the runtime. 
 
-2. `csv-count`: Take the sum of one of the columns in the file. This exercises the CSV parsing library, string 
-to integer parsing, and basic maths. I saw [textql](https://github.com/dinedal/textql) which slurps data into 
-sqlite and runs queries on the resulting database. I thought it's a cool idea, but could it possibly be 
-performant? This test would probably be better named as `csv-summer`
+2. `csv-count`: Take the sum of one of the columns in the file. This exercises the CSV parsing library, string to integer parsing, and basic maths. I saw [textql](https://github.com/dinedal/textql) which slurps data into sqlite and runs queries on the resulting database. I thought it's a cool idea, but could it possibly be performant? This test would probably be better named as `csv-summer`
 
 ## Timings
 
-Here are some timings from my machine for the field count. 
+Here are some timings from whatever virtual machine/container system runs on [Wercker](https://app.wercker.com/#ehiggs/csv-game/build/5779804f3ec144923a007af6) for the `fieldcount`. 
 
-| Language            | Time     |
-----------------------|----------:
-| C (libcsv)          | 0m0.136s |
-| C++ (Spirit)        | 0m0.229s |
-| Clojure (data.csv)  | 0m3.127s |
-| Go (Go 1.5)         | 0m1.225s |
-| Haskell (Cassava)   | 0m1.353s |
-| Java (BeanIO)       | 0m1.785s |
-| Java (CSVeed)       | 0m8.218s |
-| Java (CommonsCSV)   | 0m1.345s |
-| Java (JavaCSV)      | 0m0.697s |
-| Java (OpenCSV)      | 0m0.679s |
-| Java (UnivocityCSV) | 0m0.528s |
-| Julia (0.3.1)       | 0m3.639s |
-| Lua LPEG            | 0m1.139s |
-| Luajit FFI          | 0m1.038s |
-| Ocaml               | 0m0.474s |
-| Perl (Text::CSV\_XS)| 0m2.258s |
-| PHP 5.5             | 0m2.576s |
-| Python 2.7          | 0m0.532s |
-| Python 3.3          | 0m0.857s |
-| R                   | 0m2.050s |
-| Ruby                | 0m11.898s|
-| Rust (csv)          | 0m0.135s |
-| Rust (quick)        | 0m0.099s |
-| Rust (libcsv)       | 0m0.136s |
-| Scala (mighty-csv)  | 0m1.109s |
+| Language |Library        |Time      | fieldcount-empty |
+---------------------------|----------|------------------:
+|R         |dataframe      |0m2.581   |0m2.480           |
+|c         |libcsv         |0m0.131   |0m0.130           |
+|C++       |spirit         |0m0.212   |0m0.211           |
+|C++       |tokenizer      |0m1.360   |0m1.359           |
+|Clojure   |csv            |0m3.349   |0m2.245           |
+|Golang    |csv            |0m1.318   |0m1.317           |
+|Haskell   |cassava        |0m1.330   |0m1.329           |
+|Java      |BeanIOCsv      |0m2.931   |0m2.840           |
+|Java      |CSVeedCsv      |0m15.186  |0m14.790          |
+|Java      |CommonsCsv     |0m1.879   |0m1.786           |
+|Java      |JavaCsv        |0m1.133   |0m1.038           |
+|Java      |OpenCsv        |0m1.177   |0m1.087           |
+|Java      |UnivocityCsv   |0m1.016   |0m0.906           |
+|Julia     |dataframe      |0m3.504   |0m1.709           |
+|Lua       |lpeg           |0m1.050   |0m1.049           |
+|Luajit    |libcsv         |0m0.987   |0m0.986           |
+|Perl      |Text::CSV_XS   |0m2.274   |0m2.251           |
+|Php       |csv            |0m2.233   |0m2.225           |
+|Python2   |csv (stdlib)   |0m0.376   |0m0.367           |
+|Python2   |pandas         |0m0.963   |0m0.735           |
+|python3   |csv (stdlib)   |0m0.527   |0m0.508           |
+|Ruby      |csv (stdlib)   |0m10.376  |0m10.340          |
+|Rust      |csv            |0m0.133   |0m0.126           |
+|Rust      |libcsv         |0m0.137   |0m0.127           |
+|Rust      |quick          |0m0.133   |0m0.124           |
 
-Here are some timings for the `csv-count` test.
+Here are some timings for the `csv-count` test (which are old and haven't been added to the Continuous Integration).
 
 | Language            | Time     |
 ----------------------|----------:
@@ -107,7 +103,7 @@ Luajit FFI is using the C libcsv library through a foreign function interface.
 
 R reads the CSV file into a DataFrame and multiplies the product of the
 dimensions rather than counting each individual record.  This may be a bit
-cheaty.
+cheaty. Pandas does this too.
 
 Julia works in a similar fashion to R and reads the CSV file into an
 Array{Any,2} and multiplies the product of the dimensions rather than counting
