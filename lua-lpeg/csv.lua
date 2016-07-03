@@ -16,3 +16,4 @@ for l in io.stdin:lines() do
     local rec = {csv(l)}                                                                                         
     n = n + #rec                                                                                                 
 end     
+print(n)
