@@ -55,6 +55,10 @@ build:
       code: |
         cd java && ./build.sh && cd ..
     - script:
+      name: run scala
+      code: |
+        cd scala && ./build.sh && cd ..
+    - script:
       name: run perl
       code: |
         cd perl && ./build.sh && cd ..
