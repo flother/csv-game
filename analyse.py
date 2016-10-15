@@ -1,6 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
+from __future__ import print_function
 import pandas as p
+
 d = p.read_csv('results.csv', header=0, names=['lang','lib','task','time'])
 fieldcount = d[d.task == 'fieldcount']
 empty = d[d.task == 'empty']
