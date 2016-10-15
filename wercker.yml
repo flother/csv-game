@@ -87,5 +87,5 @@ build:
       code: |
         cd php && ./build.sh && cd ..
     - script:
-      name: dump results
-      code: cat results.csv
+      name: analyse results
+      code: ./analyse.py
