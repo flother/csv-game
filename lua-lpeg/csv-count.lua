@@ -11,7 +11,7 @@ function csv (s)
 end
 
 -- Sum field provided by argument fields from stdin
-local field = tonumber(arg[1]) 
+local field = tonumber(arg[1])
 local fh,err = io.open(arg[2])
 if err then print("Could not open file") ; return ; end
 
