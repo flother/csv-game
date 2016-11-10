@@ -1,6 +1,6 @@
 #!/bin/bash
 source ../build.sh
-for SCRIPT in csvreader libcsv-reader quick-reader; do 
+for SCRIPT in csvreader libcsv-reader quick-reader peg-reader; do 
   echo $SCRIPT
   (cd $SCRIPT && cargo build --release)
 done
