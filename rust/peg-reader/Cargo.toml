@@ -1,0 +1,10 @@
+[package]
+name = "peg-reader"
+version = "0.1.0"
+authors = ["Ewan Higgs <ewan_higgs@yahoo.co.uk>"]
+
+[[bin]]
+name = "peg-reader"
+
+[dependencies]
+peg = "0.3.0"
