@@ -10,5 +10,5 @@ timer ../results.csv rust libcsv-reader fieldcount "./libcsv-reader/target/relea
 timer ../results.csv rust libcsv-reader empty "./libcsv-reader/target/release/csvreader /tmp/empty.csv"
 timer ../results.csv rust quick-reader fieldcount "./quick-reader/target/release/quick-reader /tmp/hello.csv"
 timer ../results.csv rust quick-reader empty "./quick-reader/target/release/quick-reader /tmp/empty.csv"
-timer ../results.csv rust peg-reader fieldcount "./peg-reader/target/release/peg-reader/tmp/hello.csv"
+timer ../results.csv rust peg-reader fieldcount "./peg-reader/target/release/peg-reader /tmp/hello.csv"
 timer ../results.csv rust peg-reader empty "./peg-reader/target/release/peg-reader /tmp/empty.csv"
