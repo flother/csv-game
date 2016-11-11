@@ -1,6 +1,6 @@
 ---
 box:
-  id: ehiggs/csv-game:v5
+  id: ehiggs/csv-game-docker:latest
 
 build:
   steps:
