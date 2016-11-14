@@ -49,9 +49,9 @@ performant? This test would probably be better named as `csv-summer`
 
 ## Timings
 
-Here are some timings from my machine for the field count. 
+Here are some timings from the [Wercker Continuous Integration Pipeline](https://app.wercker.com/applications/57642ef4dcf444652e2390bc) for the field count.
 
-| Language            | Time     |
+| Language            | Min Time |
 ----------------------|----------:
 | C (libcsv)          | 0m0.136s |
 | C++ (Spirit)        | 0m0.229s |
@@ -79,7 +79,8 @@ Here are some timings from my machine for the field count.
 | Rust (libcsv)       | 0m0.136s |
 | Scala (mighty-csv)  | 0m1.109s |
 
-Here are some timings for the `csv-count` test.
+Here are some timings for the `csv-count` test from an old machine I no longer
+have. These should/will be automated in the future.
 
 | Language            | Time     |
 ----------------------|----------:
