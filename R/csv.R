@@ -1,4 +1,3 @@
 #!/usr/bin/env Rscript
-csv <- read.csv('/dev/stdin', header=FALSE)
-# TODO: make this actually count the fields instead of this fudge.
+csv <- tryCatch(read.csv('/dev/stdin', header=FALSE), error=function(e) data.frame())
 print(nrow(csv) * ncol(csv))

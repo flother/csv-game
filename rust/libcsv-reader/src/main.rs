@@ -1,10 +1,8 @@
-#![feature(libc)]
-#![feature(core)]
-
 extern crate libc;
+extern crate num_traits;
 
 use std::io::Read;
-use std::num::NumCast;
+use num_traits::NumCast;
 use std::ptr;
 use libc::{size_t, c_void};
 
