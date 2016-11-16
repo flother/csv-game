@@ -1,0 +1,10 @@
+[package]
+name = "nom-reader"
+version = "0.1.0"
+authors = ["Ewan Higgs <ewan_higgs@yahoo.co.uk>"]
+
+[[bin]]
+name = "nom-reader"
+
+[dependencies]
+csvparser = { git="https://github.com/GuillaumeGomez/csv-parser.git" }
