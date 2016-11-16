@@ -39,7 +39,7 @@ As I don't claim that all the implementations are representative of idiomatic co
 ## The Tests
 There are two tests. 
 
-1. `fieldcount`: Count the number of fields in the file. This exercises the CSV processing library by forcing it to parse all the fields. There is a separate run called `empty` which runs against an empty file and it used as an attempt to tease out the performance of the actual CSV parsing from the startup for the runtime (importing modules, loading libraries, instantiating structures, etc). 
+1. `fieldcount`: Count the number of fields in the file. This exercises the CSV processing library by forcing it to parse all the fields. There is a separate run called `empty` which runs against an empty file and it is used as an attempt to tease out the performance of the actual CSV parsing from the startup for the runtime (importing modules, loading libraries, instantiating structures, etc). 
 
 2. `csv-count`: Take the sum of one of the columns in the file. This exercises the CSV parsing library, string to integer parsing, and basic maths. I saw [textql](https://github.com/dinedal/textql) which slurps data into sqlite and runs queries on the resulting database. I thought it's a cool idea, but could it possibly be performant? This test would probably be better named as `csv-summer`
 
@@ -49,32 +49,35 @@ Here are some timings from whatever virtual machine/container system runs on [We
 
 | Language |Library        |Time      | Time sans startup|
 -----------|---------------|----------|------------------:
-|Rust      |quick-reader   |0.119     |0.118             |
-|Rust      |csvreader      |0.123     |0.122             |
-|C         |libcsv         |0.126     |0.125             |
-|Rust      |libcsv-reader  |0.126     |0.125             |
-|C++       |spirit         |0.198     |0.197             |
-|Java      |UnivocityCsv   |0.443     |0.338             |
-|Python2   |pandas         |0.562     |0.351             |
-|Python2   |csv            |0.365     |0.356             |
-|Java      |JavaCsv        |0.523     |0.436             |
-|Python3   |csv            |0.513     |0.495             |
-|Java      |OpenCsv        |0.598     |0.513             |
-|Scala     |MightyCsv      |0.933     |0.671             |
-|Luajit    |libcsv         |0.958     |0.957             |
-|Lua       |lpeg           |1.020     |1.019             |
-|Java      |CommonsCsv     |1.287     |1.198             |
-|Golang    |csv            |1.275     |1.274             |
-|Haskell   |cassava        |1.315     |1.314             |
-|C++       |tokenizer      |1.322     |1.321             |
-|Java      |BeanIOCsv      |1.660     |1.574             |
-|Clojure   |csv            |2.518     |1.601             |
-|Julia     |dataframe      |3.360     |1.696             |
-|R         |dataframe      |2.250     |2.129             |
-|php       |csv            |2.172     |2.164             |
-|Perl      |Text::CSV_XS   |2.255     |2.233             |
-|Java      |CSVeedCsv      |7.173     |6.897             |
-|Ruby      |csv            |9.993     |9.958             |
+|Rust      |quick-reader   |0.112     |0.111             |
+|Rust      |csvreader      |0.118     |0.117             |
+|C         |libcsv         |0.127     |0.126             |
+|Rust      |libcsv-reader  |0.128     |0.126             |
+|C++       |spirit         |0.202     |0.201             |
+|Java      |UnivocityCsv   |0.460     |0.352             |
+|Python2   |csv            |0.363     |0.353             |
+|Python2   |pandas         |0.581     |0.387             |
+|Java      |JavaCsv        |0.531     |0.442             |
+|Python3   |csv            |0.514     |0.494             |
+|Java      |OpenCsv        |0.615     |0.526             |
+|Scala     |MightyCsv      |0.956     |0.699             |
+|Luajit    |libcsv         |0.981     |0.980             |
+|Rust      |nom-reader     |1.011     |1.010             |
+|Lua       |lpeg           |1.019     |1.017             |
+|Rust      |peg-reader     |1.039     |1.038             |
+|Rust      |lalr-reader    |1.081     |1.080             |
+|Java      |CommonsCsv     |1.291     |1.198             |
+|Golang    |csv            |1.287     |1.286             |
+|Haskell   |cassava        |1.319     |1.318             |
+|C++       |tokenizer      |1.325     |1.324             |
+|Java      |BeanIOCsv      |1.672     |1.583             |
+|Clojure   |csv            |2.544     |1.606             |
+|Julia     |dataframe      |3.400     |1.715             |
+|Php       |csv            |2.179     |2.170             |
+|R         |dataframe      |2.273     |2.187             |
+|Perl      |Text::CSV_XS   |2.257     |2.234             |
+|Java      |CSVeedCsv      |7.383     |7.104             |
+|Ruby      |csv            |9.927     |9.891             |
 
 Here are some timings for the `csv-count` test (which are old and haven't been added to the Continuous Integration).
 
@@ -95,10 +98,13 @@ Here are some timings for the `csv-count` test (which are old and haven't been a
 | SQLite3             | 0m1.834s |
 
 ## Notes
-C++ is using the Boost.Spirit library and not a specific library for parsing
-CSV.
+The following variants are using general parsing libraries for processing the CSV: 
 
-Lua is using a library for parsing LPEG grammars.
+* C++ Boost.Spirit.
+* Lua lpeg (a [PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar) library).
+* Rust PEG.
+* Rust lalrpop (a [LALR](https://en.wikipedia.org/wiki/LALR_parser) parser).
+* Rust NOM (a [parser combinator](https://en.wikipedia.org/wiki/Parser_combinator) library).
 
 Luajit FFI is using the C libcsv library through a foreign function interface.
 
@@ -111,6 +117,15 @@ Array{Any,2} and multiplies the product of the dimensions rather than counting
 each individual record. Like the R version, this might be a bit cheaty.
 
 SQLite makes a table and imports the csv file and then runs a query.
+
+There is also a perl6 version but unfortunately it takes a very long time to run
+(minutes). Rakudo/moar/perl6 is [under active development and performance
+improvements](http://tux.nl/Talks/CSV6/speed4.html) so I expect this will
+get much faster in the future. When a breakthrough occurs, let me know and I'd
+love to add it to the game.
+
+I wish AWK had a `--csv` flag which did something useful for quoted csv files. I
+would love to add awk, gawk, mawk, and nawk.
 
 ## Rudimentary Analysis
 
