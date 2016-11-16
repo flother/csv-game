@@ -1,0 +1,15 @@
+[package]
+name = "lalr-reader"
+version = "0.1.0"
+authors = ["Ewan Higgs <ewan_higgs@yahoo.co.uk>"]
+build = "build.rs"
+
+[[bin]]
+name = "lalr-reader"
+
+
+[build-dependencies]
+lalrpop = "0.12.0"
+
+[dependencies]
+lalrpop-util = "0.12.0"
