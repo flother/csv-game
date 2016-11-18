@@ -49,35 +49,35 @@ Here are some timings from whatever virtual machine/container system runs on [We
 
 | Language |Library        |Time      | Time sans startup|
 -----------|---------------|----------|------------------:
-|Rust      |quick-reader   |0.112     |0.111             |
-|Rust      |csvreader      |0.118     |0.117             |
-|C         |libcsv         |0.127     |0.126             |
-|Rust      |libcsv-reader  |0.128     |0.126             |
-|C++       |spirit         |0.202     |0.201             |
-|Java      |UnivocityCsv   |0.460     |0.352             |
-|Python2   |csv            |0.363     |0.353             |
-|Python2   |pandas         |0.581     |0.387             |
-|Java      |JavaCsv        |0.531     |0.442             |
-|Python3   |csv            |0.514     |0.494             |
-|Java      |OpenCsv        |0.615     |0.526             |
-|Scala     |MightyCsv      |0.956     |0.699             |
-|Luajit    |libcsv         |0.981     |0.980             |
-|Rust      |nom-reader     |1.011     |1.010             |
-|Lua       |lpeg           |1.019     |1.017             |
-|Rust      |peg-reader     |1.039     |1.038             |
-|Rust      |lalr-reader    |1.081     |1.080             |
-|Java      |CommonsCsv     |1.291     |1.198             |
-|Golang    |csv            |1.287     |1.286             |
-|Haskell   |cassava        |1.319     |1.318             |
-|C++       |tokenizer      |1.325     |1.324             |
-|Java      |BeanIOCsv      |1.672     |1.583             |
-|Clojure   |csv            |2.544     |1.606             |
-|Julia     |dataframe      |3.400     |1.715             |
-|Php       |csv            |2.179     |2.170             |
-|R         |dataframe      |2.273     |2.187             |
-|Perl      |Text::CSV_XS   |2.257     |2.234             |
-|Java      |CSVeedCsv      |7.383     |7.104             |
-|Ruby      |csv            |9.927     |9.891             |
+|Rust      |quick-reader   |0.107     |0.106             |
+|Rust      |csvreader      |0.121     |0.120             |
+|C         |libcsv         |0.122     |0.121             |
+|Rust      |libcsv-reader  |0.123     |0.121             |
+|C++       |spirit         |0.196     |0.195             |
+|Java      |UnivocityCsv   |0.439     |0.340             |
+|Python2   |csv            |0.392     |0.382             |
+|Python2   |pandas         |0.606     |0.408             |
+|Java      |JavaCsv        |0.516     |0.437             |
+|C++       |tokenizer      |0.476     |0.475             |
+|Python3   |csv            |0.559     |0.537             |
+|Java      |OpenCsv        |0.654     |0.569             |
+|Scala     |MightyCsv      |0.770     |0.587             |
+|Golang    |csv            |0.852     |0.851             |
+|Java      |CommonsCsv     |1.020     |0.937             |
+|Rust      |nom-reader     |0.967     |0.966             |
+|Luajit    |libcsv         |0.986     |0.984             |
+|Rust      |peg-reader     |1.017     |1.016             |
+|Lua       |lpeg           |1.021     |1.019             |
+|Rust      |lalr-reader    |1.087     |1.086             |
+|Haskell   |cassava        |1.397     |1.396             |
+|Java      |BeanIOCsv      |1.627     |1.545             |
+|Clojure   |csv            |2.267     |1.563             |
+|Php       |csv            |1.766     |1.756             |
+|R         |dataframe      |2.042     |1.966             |
+|Julia     |dataframe      |3.579     |1.967             |
+|Perl      |Text::CSV_XS   |2.123     |2.100             |
+|Java      |CSVeedCsv      |6.612     |6.350             |
+|Ruby      |csv            |9.134     |9.091             |
 
 Here are some timings for the `csv-count` test (which are old and haven't been added to the Continuous Integration).
 
