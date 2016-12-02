@@ -1,0 +1,6 @@
+#[pub]
+record -> Vec<String>
+    = field ** ","
+field -> String
+      = "\"" f:(n:$([^\"]*) {n.to_string() })  "\"" { f }
+      / f:(n:$([^,\n]*) { n.to_string() }) { f }

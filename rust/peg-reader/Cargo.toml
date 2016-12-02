@@ -2,9 +2,10 @@
 name = "peg-reader"
 version = "0.1.0"
 authors = ["Ewan Higgs <ewan_higgs@yahoo.co.uk>"]
+build = "build.rs"
 
 [[bin]]
 name = "peg-reader"
 
-[dependencies]
-peg = "0.3.0"
+[build-dependencies]
+peg = "0.4.0"

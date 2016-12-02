@@ -1,18 +1,10 @@
-#![feature(plugin)]
-#![plugin(peg_syntax_ext)]
-
 use std::io::BufReader;
 use std::io::BufRead;
 use std::fs::File;
 
-peg! parser(r#"
-#[pub]
-record -> Vec<String>
-    = field ** ","
-field -> String
-      = "\"" f:([^\"]* {match_str.to_string() })  "\"" { f }
-      / f:([^,\n]* { match_str.to_string() }) { f }
-"#);
+mod parser {
+    include!(concat!(env!("OUT_DIR"), "/csv.rs"));
+}
 
 fn main() {
     let fpath = ::std::env::args().nth(1).unwrap();
