@@ -14,12 +14,12 @@ fn main() {
     for line in file.lines() {
         let l = line.unwrap();
         let rec = parser::record(&l).unwrap();
-        sum += rec.len();
+        sum += rec;
     }
     println!("{}", sum);
 }
 
 #[test]
 fn test_hello() {
-    assert_eq!(parser::record(r#"hello,","," ",world,"!""#).unwrap().len(), 5);
+    assert_eq!(parser::record(r#"hello,","," ",world,"!""#).unwrap(), 5);
 }

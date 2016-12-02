@@ -1,6 +1,6 @@
 #[pub]
-record -> Vec<String>
-    = field ** ","
-field -> String
-      = "\"" f:(n:$([^\"]*) {n.to_string() })  "\"" { f }
-      / f:(n:$([^,\n]*) { n.to_string() }) { f }
+record -> u32
+    = f:field ** "," { f.into_iter().sum() }
+field -> u32
+      = "\"" [^\"]*   "\"" { 1 }
+      / [^,\n]* { 1 }
