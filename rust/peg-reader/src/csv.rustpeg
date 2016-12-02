@@ -1,6 +1,11 @@
 #[pub]
+file -> u32
+    = r:(r:record "\n" { r } )* { r.into_iter().sum() }
+
+#[pub]
 record -> u32
-    = f:field ** "," { f.into_iter().sum() }
+    = f:field ++ "," { f.into_iter().sum() }
+
 field -> u32
-      = "\"" [^\"]*   "\"" { 1 }
-      / [^,\n]* { 1 }
+    = "\"" [^\"]*  "\"" { 1 }
+    / [^,\n]* { 1 }

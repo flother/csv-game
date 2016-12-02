@@ -1,5 +1,4 @@
-use std::io::BufReader;
-use std::io::BufRead;
+use std::io::Read;
 use std::fs::File;
 
 mod parser {
@@ -8,18 +7,17 @@ mod parser {
 
 fn main() {
     let fpath = ::std::env::args().nth(1).unwrap();
-    let f = File::open(fpath).unwrap();
-    let file = BufReader::new(&f);
-    let mut sum = 0;
-    for line in file.lines() {
-        let l = line.unwrap();
-        let rec = parser::record(&l).unwrap();
-        sum += rec;
-    }
+    let mut f = File::open(fpath).unwrap();
+    let mut text = String::new();
+    f.read_to_string(&mut text).unwrap();
+    let sum = parser::file(&text).unwrap();
     println!("{}", sum);
 }
 
 #[test]
 fn test_hello() {
     assert_eq!(parser::record(r#"hello,","," ",world,"!""#).unwrap(), 5);
+    assert_eq!(parser::file(r#"hello,","," ",world,"!"
+hello,","," ",world,"!"
+"#).unwrap(), 10);
 }
