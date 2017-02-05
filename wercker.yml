@@ -11,6 +11,10 @@ build:
         echo "Bash Version: $BASH_VERSION"
         ./test/generate_test.sh
     - script:
+      name: run awk
+      code: |
+        cd awk && ./build.sh && cd ..
+    - script:
       name: run c
       code: |
         cd c && ./build.sh && cd ..
