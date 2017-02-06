@@ -49,35 +49,36 @@ Here are some timings from whatever virtual machine/container system runs on [We
 
 | Language |Library        |Time      | Time sans startup|
 -----------|---------------|----------|------------------:
-|Rust      |quick-reader   |0.107     |0.106             |
-|Rust      |csvreader      |0.121     |0.120             |
+|Rust      |quick-reader   |0.095     |0.094             |
+|Rust      |csvreader      |0.111     |0.110             |
 |C         |libcsv         |0.122     |0.121             |
 |Rust      |libcsv-reader  |0.123     |0.121             |
-|C++       |spirit         |0.196     |0.195             |
-|Java      |UnivocityCsv   |0.459     |0.359             |
-|Python2   |csv            |0.392     |0.382             |
-|Python2   |pandas         |0.603     |0.405             |
-|Java      |JavaCsv        |0.540     |0.462             |
-|C++       |tokenizer      |0.477     |0.476             |
-|Python3   |csv            |0.561     |0.539             |
-|Rust      |peg-reader     |0.561     |0.560             |
-|Java      |OpenCsv        |0.657     |0.582             |
-|Scala     |MightyCsv      |0.817     |0.640             |
-|Golang    |csv            |0.831     |0.830             |
-|Luajit    |libcsv         |0.980     |0.978             |
-|Java      |CommonsCsv     |1.063     |0.984             |
-|Rust      |nom-reader     |1.007     |1.006             |
-|Lua       |lpeg           |1.016     |1.014             |
-|Rust      |lalr-reader    |1.124     |1.123             |
-|Haskell   |cassava        |1.416     |1.415             |
-|Java      |BeanIOCsv      |1.608     |1.533             |
-|Clojure   |csv            |2.311     |1.603             |
-|Php       |csv            |1.762     |1.752             |
-|R         |dataframe      |2.028     |1.955             |
-|Julia     |dataframe      |3.670     |2.071             |
-|Perl      |Text::CSV_XS   |2.113     |2.091             |
-|Java      |CSVeedCsv      |6.742     |6.514             |
-|Ruby      |csv            |9.170     |9.128             |
+|C++       |spirit         |0.135     |0.134             |
+|Java      |UnivocityCsv   |0.495     |0.390             |
+|Python2   |pandas         |0.644     |0.406             |
+|Python2   |csv            |0.418     |0.407             |
+|C++       |tokenizer      |0.418     |0.417             |
+|Java      |JavaCsv        |0.594     |0.507             |
+|Python3   |csv            |0.565     |0.544             |
+|Rust      |peg-reader     |0.558     |0.557             |
+|Java      |OpenCsv        |0.705     |0.624             |
+|Scala     |MightyCsv      |0.870     |0.675             |
+|Golang    |csv            |0.839     |0.838             |
+|Luajit    |libcsv         |1.004     |1.002             |
+|Lua       |lpeg           |1.024     |1.022             |
+|Java      |CommonsCsv     |1.110     |1.027             |
+|Rust      |nom-reader     |1.032     |1.031             |
+|Rust      |lalr-reader    |1.077     |1.076             |
+|Haskell   |cassava        |1.391     |1.389             |
+|Clojure   |csv            |2.414     |1.662             |
+|Java      |BeanIOCsv      |1.770     |1.691             |
+|Php       |csv            |1.773     |1.763             |
+|R         |dataframe      |2.088     |2.010             |
+|Perl      |Text::CSV_XS   |2.138     |2.115             |
+|Julia     |dataframe      |3.728     |2.130             |
+|Java      |CSVeedCsv      |7.627     |7.360             |
+|Gawk      |regexp         |7.868     |7.866             |
+|Ruby      |csv            |9.181     |9.136             |
 
 Here are some timings for the `csv-count` test (which are old and haven't been added to the Continuous Integration).
 
@@ -124,8 +125,8 @@ improvements](http://tux.nl/Talks/CSV6/speed4.html) so I expect this will
 get much faster in the future. When a breakthrough occurs, let me know and I'd
 love to add it to the game.
 
-I wish AWK had a `--csv` flag which did something useful for quoted csv files. I
-would love to add awk, gawk, mawk, and nawk.
+Gawk is using FPAT to delimit the fields. This is a regular expression used to
+escape the quotes csv. I wish AWK had a `--csv` flag which was more performant.
 
 ## Rudimentary Analysis
 
