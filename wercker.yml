@@ -91,5 +91,9 @@ build:
       code: |
         cd php && ./build.sh && cd ..
     - script:
+      name: run nim
+      code: |
+        cd nim && ./build.sh && cd ..
+    - script:
       name: analyse results
       code: ./analyse.py
